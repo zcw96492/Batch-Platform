@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>批处理系统</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- ================== CSS层叠样式表文件 开始 ================== -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link th:href="@{/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css}" rel="stylesheet" />
+        <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" />
+        <link th:href="@{/css/animate.min.css}" rel="stylesheet" />
+        <link th:href="@{/css/style.min.css}" rel="stylesheet" />
+        <link th:href="@{/css/style-responsive.min.css}" rel="stylesheet" />
+        <link th:href="@{/css/theme/default.css}" rel="stylesheet" id="theme" />
+        <!-- ================== CSS层叠样式表文件 结束 ================== -->
+
+        <!-- ================== 基本JS 开始 ================== -->
+        <script th:src="@{/plugins/pace/pace.min.js}"></script>
+        <!-- ================== 基本JS 结束 ================== -->
+
+        <!-- ================== Vue.js 开始 ================== -->
+        <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+        <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+        <!-- ================== Vue.js 结束 ================== -->
+    </head>
+    <body class="pace-top">
+        <!-- 页面加载进度条 开始 -->
+        <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+        <!-- 页面加载进度条 结束 -->
+
+        <!-- 登录页面背景图案 开始 -->
+        <div class="login-cover">
+            <div class="login-cover-image"><img th:src="@{/img/login-bg/bg-1.jpg}" data-id="login-cover-image" alt="" /></div>
+            <div class="login-cover-bg"></div>
+        </div>
+        <!-- 登录页面背景图案 结束 -->
+
+        <!-- 页面框架 开始 -->
+        <div id="page-container" class="fade">
+            <!-- 页面登录框 开始 -->
+            <div class="login login-v2" data-pageload-addclass="animated fadeIn">
+                <div class="login-header">
+                    <div class="brand">
+                        <span class="logo"></span> 批处理系统
+                        <small>Batch Platform Background Management System</small>
+                    </div>
+                </div>
+                <div class="login-content">
+                    <form role="form" action="accountLogin/login" method="post" class="margin-bottom-0">
+                        <div class="form-group m-b-20">
+                            <input type="text" name="username" class="form-control input-lg" placeholder="请输入邮箱/用户名/手机号" required />
+                        </div>
+                        <div class="form-group m-b-20">
+                            <input type="password" name="password" class="form-control input-lg" placeholder="请输入密码" required />
+                        </div>
+                        <div class="checkbox m-b-20">
+                            <label>
+                                <input type="checkbox" /> 记住密码
+                            </label>
+                        </div>
+                        <div class="login-buttons">
+                            <button id="submit" type="submit" class="btn btn-success btn-block btn-lg">登录</button>
+                        </div>
+                        <div class="m-t-20">
+                            还不是会员? 点击 <a href="redirectRegister">这里</a> 注册
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label>
+                                <a href="redirectEditPassword">忘记密码？</a>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- 页面登录框 开始 -->
+
+            <!-- 页面右下角背景图案选择列 结束 -->
+            <ul class="login-bg-list clearfix">
+                <li class="active"><a href="#" data-click="change-bg"><img th:src="@{/img/login-bg/bg-1.jpg}" alt="" /></a></li>
+                <li><a href="#" data-click="change-bg"><img th:src="@{/img/login-bg/bg-2.jpg}" alt="" /></a></li>
+                <li><a href="#" data-click="change-bg"><img th:src="@{/img/login-bg/bg-3.jpg}" alt="" /></a></li>
+                <li><a href="#" data-click="change-bg"><img th:src="@{/img/login-bg/bg-4.jpg}" alt="" /></a></li>
+                <li><a href="#" data-click="change-bg"><img th:src="@{/img/login-bg/bg-5.jpg}" alt="" /></a></li>
+                <li><a href="#" data-click="change-bg"><img th:src="@{/img/login-bg/bg-6.jpg}" alt="" /></a></li>
+            </ul>
+            <!-- 页面右下角背景图案选择列 开始 -->
+        </div>
+        <!-- 页面框架 结束 -->
+
+        <!-- ================== BEGIN BASE JS ================== -->
+        <script th:src="@{/plugins/jquery/jquery-1.9.1.min.js}"></script>
+        <script th:src="@{/plugins/jquery/jquery-migrate-1.1.0.min.js}"></script>
+        <script th:src="@{/plugins/jquery-ui/ui/minified/jquery-ui.min.js}"></script>
+        <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/crossbrowserjs/html5shiv.js}"></script>
+        <script th:src="@{/crossbrowserjs/respond.min.js}"></script>
+        <script th:src="@{/crossbrowserjs/excanvas.min.js}"></script>
+        <script th:src="@{/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+        <script th:src="@{/plugins/jquery-cookie/jquery.cookie.js}"></script>
+        <!-- ================== END BASE JS ================== -->
+
+        <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+        <script th:src="@{/js/login-v2.demo.min.js}"></script>
+        <script th:src="@{/js/apps.min.js}"></script>
+        <!-- ================== END PAGE LEVEL JS ================== -->
+
+        <!-- ================== 本页面的 Vue JS 开始 ================== -->
+        <script src="../vue/login.js"></script>
+        <!-- ================== 本页面的 Vue JS 结束 ================== -->
+
+        <script>
+            $(document).ready(function() {
+                App.init();
+                LoginV2.init();
+            });
+        </script>
+    </body>
+</html>

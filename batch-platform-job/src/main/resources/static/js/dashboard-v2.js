@@ -219,7 +219,7 @@ var handleDashboardGritterNotification = function() {
             $.gritter.add({
                 title: '欢迎回来,王佳芝!',
                 text: '上次登录时间: 今天上午 10:18:36',
-                image: '/market/manage/web/img/user-14.jpg',
+                image: '/img/user-14.jpg',
                 sticky: true,
                 time: '10:19:33',
                 class_name: 'my-sticky-class'
