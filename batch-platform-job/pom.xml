@@ -22,7 +22,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <batch-platform-service.version>1.0.0-SNAPSHOT</batch-platform-service.version>
+        <batch-platform-persistence.version>1.0.0-SNAPSHOT</batch-platform-persistence.version>
     </properties>
 
     <dependencies>
@@ -65,8 +65,8 @@
         <!-- batch-platform-service -->
         <dependency>
             <groupId>com.newcore</groupId>
-            <artifactId>batch-platform-service</artifactId>
-            <version>${batch-platform-service.version}</version>
+            <artifactId>batch-platform-persistence</artifactId>
+            <version>${batch-platform-persistence.version}</version>
         </dependency>
 
         <!-- 热部署支持依赖 -->

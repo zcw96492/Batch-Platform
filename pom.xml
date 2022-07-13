@@ -25,7 +25,6 @@
         <module>batch-platform-model</module>
         <module>batch-platform-utils</module>
         <module>batch-platform-persistence</module>
-        <module>batch-platform-service</module>
         <module>batch-platform-job</module>
     </modules>
 </project>
