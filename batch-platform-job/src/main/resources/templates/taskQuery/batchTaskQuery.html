@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>批处理平台</title>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+
+        <!-- ================== BEGIN BASE CSS STYLE ================== -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link th:href="@{/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css}" rel="stylesheet" />
+        <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" />
+        <link th:href="@{/css/animate.min.css}" rel="stylesheet" />
+        <link th:href="@{/css/style.css}" rel="stylesheet" />
+        <link th:href="@{/css/style-responsive.css}" rel="stylesheet" />
+        <link th:href="@{/css/theme/default.css}" rel="stylesheet" id="theme" />
+        <!-- ================== END BASE CSS STYLE ================== -->
+
+        <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+        <!-- ================== 表格组件 CSS ================== -->
+        <link th:href="@{/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css}" rel="stylesheet" />
+        <!-- ================== 表格组件 CSS ================== -->
+
+        <!-- ================== 带校验功能的表单组件 CSS ================== -->
+        <link th:href="@{/plugins/parsley/src/parsley.css}" rel="stylesheet" />
+        <!-- ================== 带校验功能的表单组件 CSS ================== -->
+
+        <!-- ================== 模态弹框组件 CSS ================== -->
+        <link th:href="@{/plugins/gritter/css/jquery.gritter.css}" rel="stylesheet" />
+        <!-- ================== 模态弹框组件 CSS ================== -->
+        <!-- ================== END PAGE LEVEL STYLE ================== -->
+
+        <!-- ================== BEGIN BASE JS ================== -->
+        <script th:src="@{/plugins/pace/pace.min.js}"></script>
+        <!-- ================== END BASE JS ================== -->
+    </head>
+    <body>
+        <!-- 页面上方进度条 开始 -->
+        <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+        <!-- 页面上方进度条 结束 -->
+
+        <!-- 页面容器 开始 -->
+        <div id="page-container" class="fade in page-sidebar-fixed page-header-fixed">
+            <!-- 页面最上方头部 开始 -->
+            <div id="header" class="header navbar navbar-default navbar-fixed-top" th:include="header :: headerTop"></div>
+            <!-- 页面最上方头部 结束 -->
+
+            <!-- 页面左侧导航菜单部分 开始 -->
+            <div id="sidebar" class="sidebar" th:include="taskQuery/navigation :: taskQueryNavigationLeft"></div>
+            <div class="sidebar-bg"></div>
+            <!-- 页面左侧导航菜单部分 结束 -->
+
+            <!-- 页面中间内容部分 开始 -->
+            <div id="content" class="content" th:include="taskQuery/content :: taskQueryContent"></div>
+            <!-- 页面中间内容部分 结束 -->
+
+            <!-- 页面最底部"一键移步至页面最上方"按钮 开始 -->
+            <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+            <!-- 页面最底部"一键移步至页面最上方"按钮 开始 -->
+        </div>
+        <!-- 页面容器 结束 -->
+
+        <!-- ================== BEGIN BASE JS ================== -->
+        <script th:src="@{/plugins/jquery/jquery-1.9.1.min.js}"></script>
+        <script th:src="@{/plugins/jquery/jquery-migrate-1.1.0.min.js}"></script>
+        <script th:src="@{/plugins/jquery-ui/ui/minified/jquery-ui.min.js}"></script>
+        <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/crossbrowserjs/html5shiv.js}"></script>
+        <script th:src="@{/crossbrowserjs/respond.min.js}"></script>
+        <script th:src="@{/crossbrowserjs/excanvas.min.js}"></script>
+        <script th:src="@{/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+        <script th:src="@{/plugins/jquery-cookie/jquery.cookie.js}"></script>
+        <!-- ================== END BASE JS ================== -->
+
+        <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+        <!-- ================== 带校验功能的表单组件 JS ================== -->
+        <script th:src="@{/plugins/parsley/dist/parsley.js}"></script>
+        <!-- ================== 带校验功能的表单组件 JS ================== -->
+
+        <!-- ================== 模态弹框组件 JS ================== -->
+        <script th:src="@{/plugins/gritter/js/jquery.gritter.js}"></script>
+        <!-- ================== 模态弹框组件 JS ================== -->
+
+        <script th:src="@{/js/apps.min.js}"></script>
+        <script th:src="@{/js/axios.js}"></script>
+        <script th:src="@{/js/query/ruleQuery/ruleQuery.js}"></script>
+        <!-- ================== END PAGE LEVEL JS ================== -->
+        <script>
+            $(document).ready(function() {
+                App.init();
+                TableManageResponsive.init();
+            });
+        </script>
+    </body>
+</html>

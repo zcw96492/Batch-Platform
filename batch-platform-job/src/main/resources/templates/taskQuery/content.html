@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>批处理平台</title>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+    </head>
+    <body>
+        <!-- 页面上方进度条 开始 -->
+        <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+        <!-- 页面上方进度条 结束 -->
+
+        <!-- 页面容器 开始 -->
+        <div id="page-container" class="fade in page-sidebar-fixed page-header-fixed">
+            <!-- 页面中间内容部分 开始 -->
+            <div id="content" class="content" th:fragment="taskQueryContent">
+                <!-- 表头部分 开始 -->
+                <ol class="breadcrumb pull-right">
+                    <li><a href="javascript:;">批处理任务查询</a></li>
+                    <li class="active">批处理任务查询</li>
+                </ol>
+                <h1 class="page-header">批处理任务查询 <small>批处理任务综合查询</small></h1>
+                <!-- 表头部分 结束 -->
+
+                <!-- 查询条件部分 开始 -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div  class="panel panel-inverse" data-sortable-id="form-validation-2">
+                            <div class="panel-heading">
+                                <div class="panel-heading-btn">
+                                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                </div>
+                                <h4 class="panel-title">批处理任务查询条件</h4>
+                            </div>
+                            <div class="panel-body panel-form">
+                                <form class="form-horizontal form-bordered">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-1 col-sm-1">任务名称 :</label>
+                                        <div class="col-md-4 col-sm-4">
+                                            <input class="form-control" type="text" id="ruleCode" name="ruleCode" placeholder="请填写任务名称"/>
+                                        </div>
+                                        <label class="control-label col-md-1 col-sm-1">任务描述 :</label>
+                                        <div class="col-md-5 col-sm-5">
+                                            <input class="form-control" type="text" id="ruleName" name="ruleName" placeholder="请填写任务描述"/>
+                                        </div>
+                                        <label class="control-label col-md-1 col-sm-1"></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-1 col-sm-1">任务状态 :</label>
+                                        <div class="col-md-4 col-sm-4">
+                                            <select class="form-control" id="ruleType" name="ruleType">
+                                                <option value="">----- 请选择任务状态 -----</option>
+                                                <option value="1">启动</option>
+                                                <option value="2">停止</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5 col-sm-5"></div>
+                                        <div class="col-md-1 col-sm-1">
+                                            <button id="querySubmit" onclick="InitData()" type="button" class="btn btn-success">查&nbsp;&nbsp;询</button>
+                                        </div>
+                                        <div class="col-md-1 col-sm-1">
+                                            <button id="reset" type="reset" class="btn btn-warning">清&nbsp;&nbsp;空</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 查询条件部分 结束 -->
+
+                <!-- 表格部分 开始 -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-inverse">
+                            <div class="panel-heading">
+                                <div class="panel-heading-btn">
+                                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                </div>
+                                <h4 class="panel-title">批处理任务查询结果</h4>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>任务名称</th>
+                                            <th>任务描述</th>
+                                            <th>Cron表达式</th>
+                                            <th>任务状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+                                <!-- 模态弹框部分 开始 -->
+                                <div class="modal fade" id="modal-alert">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">规则详情</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="alert alert-info m-b-0">
+                                                    <h4><i class="fa fa-info-circle"></i> 投保单号长度校验规则</h4>
+                                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="javascript:;" class="btn btn-sm btn-warning" data-dismiss="modal">关闭</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="modal-org">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">规则启用机构详情</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="alert alert-success m-b-0">
+                                                    <h4><i class="fa fa-info-circle"></i> 投保单号长度校验规则</h4>
+                                                    <p>000000 - 总颁机构</p>
+                                                    <p>110000 - 北京机构</p>
+                                                    <p>120000 - 天津机构</p>
+                                                    <p>130000 - 河北机构</p>
+                                                    <p>140000 - 山西机构</p>
+                                                    <p>150000 - 内蒙机构</p>
+                                                    <p>210000 - 黑龙江机构</p>
+                                                    <p>220000 - 吉林机构</p>
+                                                    <p>230000 - 辽宁机构</p>
+                                                    <p>310000 - 新疆机构</p>
+                                                    <p>320000 - 甘肃机构</p>
+                                                    <p>330000 - 青海机构</p>
+                                                    <p>340000 - 宁夏机构</p>
+                                                    <p>350000 - 陕西机构</p>
+                                                    <p>410000 - 上海机构</p>
+                                                    <p>420000 - 山东机构</p>
+                                                    <p>430000 - 江苏机构</p>
+                                                    <p>440000 - 安徽机构</p>
+                                                    <p>450000 - 湖北机构</p>
+                                                    <p>460000 - 浙江机构</p>
+                                                    <p>470000 - 河南机构</p>
+                                                    <p>480000 - 湖南机构</p>
+                                                    <p>510000 - 广东机构</p>
+                                                    <p>520000 - 福建机构</p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="javascript:;" class="btn btn-sm btn-warning" data-dismiss="modal">关闭</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 模态弹框部分 结束 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 表格部分 结束 -->
+            </div>
+            <!-- 页面中间内容部分 结束 -->
+        </div>
+        <!-- 页面容器 结束 -->
+    </body>
+</html>

@@ -981,7 +981,7 @@ fieldset[disabled] .form-control:focus {
     height: 20px;
 }
 .form-horizontal.form-bordered .form-group {
-    border-bottom: 1px solid #eee;
+    border-bottom: 0px solid #eee;
     margin: 0;
 }
 .form-horizontal.form-bordered .form-group:last-child {

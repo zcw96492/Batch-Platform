@@ -32,7 +32,7 @@ public class PageRedirectController {
     /**
      * 跳转到注册界面
      * @param model 视图模型
-     * @return 登录界面
+     * @return 注册界面
      */
     @GetMapping("/redirectRegister")
     public String redirectRegister(Model model){
@@ -43,7 +43,7 @@ public class PageRedirectController {
     /**
      * 跳转到修改密码界面
      * @param model 视图模型
-     * @return 登录界面
+     * @return 修改密码界面
      */
     @GetMapping("/redirectEditPassword")
     public String redirectEditPassword(Model model){
@@ -54,11 +54,22 @@ public class PageRedirectController {
     /**
      * 跳转到仪表板界面
      * @param model 视图模型
-     * @return 登录界面
+     * @return 仪表板界面
      */
     @GetMapping("/redirectIndex")
     public String redirectIndex(Model model){
         logger.info("批处理平台 || 跳转到仪表板界面...");
         return "index";
+    }
+
+    /**
+     * 跳转到批处理任务查询界面
+     * @param model 视图模型
+     * @return 批处理任务查询界面
+     */
+    @GetMapping("/redirectBatchTaskQuery")
+    public String redirectBatchTaskQuery(Model model){
+        logger.info("批处理平台 || 跳转到批处理任务查询界面...");
+        return "taskQuery/batchTaskQuery";
     }
 }

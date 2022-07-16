@@ -7,7 +7,7 @@ Website: http://www.seantheme.com/color-admin-v2.1/admin/html/
 
 @media(max-width: 979px) {
     .form-horizontal.form-bordered .form-group {
-        border-bottom: 1px solid #eee;
+        border-bottom: 0px solid #eee;
     }
     .form-horizontal.form-bordered .form-group > .control-label {
         padding: 15px;
