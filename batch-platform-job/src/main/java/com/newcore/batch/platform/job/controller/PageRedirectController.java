@@ -26,7 +26,7 @@ public class PageRedirectController {
     @GetMapping("/")
     public String redirectLogin(Model model){
         logger.info("批处理平台 || 跳转到登录界面...");
-        return "index";
+        return "login";
     }
 
     /**
@@ -48,6 +48,17 @@ public class PageRedirectController {
     @GetMapping("/redirectEditPassword")
     public String redirectEditPassword(Model model){
         logger.info("批处理平台 || 跳转到修改密码界面...");
-        return "editPassword";
+        return "profile/profile";
+    }
+
+    /**
+     * 跳转到仪表板界面
+     * @param model 视图模型
+     * @return 登录界面
+     */
+    @GetMapping("/redirectIndex")
+    public String redirectIndex(Model model){
+        logger.info("批处理平台 || 跳转到仪表板界面...");
+        return "index";
     }
 }

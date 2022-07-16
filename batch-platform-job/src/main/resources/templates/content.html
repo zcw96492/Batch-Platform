@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>批处理平台</title>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+    </head>
+    <body>
+        <!-- 页面上方进度条 开始 -->
+        <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+        <!-- 页面上方进度条 结束 -->
+
+        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+            <!-- 页面中间内容部分 开始 -->
+            <div id="content" class="content" th:fragment="contentIndex">
+                <!-- 右上部当前页面位置展示标签 开始 -->
+                <ol class="breadcrumb pull-right">
+                    <li>仪表板</li>
+                    <li class="active">批处理任务仪表板</li>
+                </ol>
+                <!-- 右上部当前页面位置展示标签 结束 -->
+
+                <!-- 当前页面标题 开始 -->
+                <h1 class="page-header">任务批量处理系统监控平台 <small>统计截止时间:2021-08-25 16:00:00</small></h1>
+                <!-- 当前页面标题 结束 -->
+
+                <!-- 第一行标签展示 开始 -->
+                <div class="row">
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-green">
+                            <div class="stats-icon stats-icon-lg"><i class="fa fa-tags fa-fw"></i></div>
+                            <div class="stats-title">正在执行任务数</div>
+                            <div class="stats-number">7,842,900</div>
+                            <div class="stats-progress progress">
+                                <div class="progress-bar" style="width: 70%;"></div>
+                            </div>
+                            <div class="stats-desc">统计截止:2021-08-25 15:00:00</div>
+                        </div>
+                    </div>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-blue">
+                            <div class="stats-icon stats-icon-lg"><i class="fa fa-tags fa-fw"></i></div>
+                            <div class="stats-title">停止任务数</div>
+                            <div class="stats-number">180,200</div>
+                            <div class="stats-progress progress">
+                                <div class="progress-bar" style="width: 40.5%;"></div>
+                            </div>
+                            <div class="stats-desc">统计截止:2021-08-25 12:00:00</div>
+                        </div>
+                    </div>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-purple">
+                            <div class="stats-icon stats-icon-lg"><i class="fa fa-tags fa-fw"></i></div>
+                            <div class="stats-title">有效任务总数</div>
+                            <div class="stats-number">38,900</div>
+                            <div class="stats-progress progress">
+                                <div class="progress-bar" style="width: 76.3%;"></div>
+                            </div>
+                            <div class="stats-desc">统计截止:2021-08-25 15:30:00</div>
+                        </div>
+                    </div>
+                    <!-- end col-3 -->
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget widget-stats bg-black">
+                            <div class="stats-icon stats-icon-lg"><i class="fa fa-tags fa-fw"></i></div>
+                            <div class="stats-title">批处理任务总数</div>
+                            <div class="stats-number">3,988</div>
+                            <div class="stats-progress progress">
+                                <div class="progress-bar" style="width: 54.9%;"></div>
+                            </div>
+                            <div class="stats-desc">统计截止:2021-08-25 14:50:00</div>
+                        </div>
+                    </div>
+                    <!-- end col-3 -->
+                </div>
+                <!-- 第一行标签展示 结束 -->
+
+                <!-- 第二行标签展示 开始 -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget-chart with-sidebar bg-black">
+                            <div class="widget-chart-content">
+                                <h4 class="chart-title">
+                                    2022年度批处理任务执行总数变化趋势
+                                    <small>统计截止时间:2022-08-25 14:50:00</small>
+                                </h4>
+                                <div id="visitors-line-chart" class="morris-inverse" style="height: 260px;"></div>
+                            </div>
+                            <div class="widget-chart-sidebar bg-black-darker">
+                                <div class="chart-number">
+                                    1,225,729
+                                    <small>任务总执行量(单位:次)</small>
+                                </div>
+                                <div id="visitors-donut-chart" style="height: 160px"></div>
+                                <ul class="chart-legend">
+                                    <li><i class="fa fa-circle-o fa-fw text-success m-r-5"></i> 86.3% <span>任务执行成功</span></li>
+                                    <li><i class="fa fa-circle-o fa-fw text-primary m-r-5"></i> 13.7% <span>任务执行失败</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第二行标签展示 结束 -->
+            </div>
+            <!-- 页面中间内容部分 结束 -->
+        </div>
+    </body>
+</html>

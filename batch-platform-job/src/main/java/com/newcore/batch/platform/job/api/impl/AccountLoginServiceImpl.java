@@ -23,6 +23,6 @@ public class AccountLoginServiceImpl implements AccountLoginService {
      */
     @Override
     public boolean login(AccountLoginRequest accountLoginRequest) {
-        return false;
+        return "admin".equals(accountLoginRequest.getUsername()) && "admin".equals(accountLoginRequest.getPassword());
     }
 }

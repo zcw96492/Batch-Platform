@@ -18,12 +18,12 @@
 		<link th:href="@{/css/theme/default.css}" rel="stylesheet" id="theme" />
 		<!-- ================== END BASE CSS STYLE ================== -->
 
-		<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
-		<link th:href="@{/plugins/jquery-jvectormap/jquery-jvectormap.css}" rel="stylesheet" />
-		<link th:href="@{/plugins/bootstrap-calendar/css/bootstrap_calendar.css}" rel="stylesheet" />
+		<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+		<link th:href="@{/plugins/DataTables/media/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/plugins/parsley/src/parsley.css}" rel="stylesheet" />
 		<link th:href="@{/plugins/gritter/css/jquery.gritter.css}" rel="stylesheet" />
-		<link th:href="@{/plugins/morris/morris.css}" rel="stylesheet" />
-		<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+		<!-- ================== END PAGE LEVEL STYLE ================== -->
 
 		<!-- ================== BEGIN BASE JS ================== -->
 		<script th:src="@{/plugins/pace/pace.min.js}"></script>
@@ -41,24 +41,20 @@
 			<!-- 页面最上方头部 结束 -->
 
 			<!-- 页面左侧导航菜单部分 开始 -->
-			<div id="sidebar" class="sidebar" th:include="navigation :: navigationLeft"></div>
+			<div id="sidebar" class="sidebar" th:include="profile/navigation :: profileNavigationLeft"></div>
 			<div class="sidebar-bg"></div>
 			<!-- 页面左侧导航菜单部分 结束 -->
 
 			<!-- 页面中间内容部分 开始 -->
-			<div id="content" class="content" th:include="content :: contentIndex"></div>
+			<div id="content" class="content" th:include="profile/content :: profileContent"></div>
 			<!-- 页面中间内容部分 结束 -->
 
 			<!-- 页面最底部"一键移步至页面最上方"按钮 开始 -->
 			<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
-			<!-- 页面最底部"一键移步至页面最上方"按钮 结束 -->
-
-			<!-- 页脚按钮 开始 -->
-			<div class="footer" th:include="footer :: copyright"></div>
-			<!-- 页脚按钮 结束 -->
+			<!-- 页面最底部"一键移步至页面最上方"按钮 开始 -->
 		</div>
 		<!-- 页面容器 结束 -->
-
+	
 		<!-- ================== BEGIN BASE JS ================== -->
 		<script th:src="@{/plugins/jquery/jquery-1.9.1.min.js}"></script>
 		<script th:src="@{/plugins/jquery/jquery-migrate-1.1.0.min.js}"></script>
@@ -72,20 +68,20 @@
 		<!-- ================== END BASE JS ================== -->
 
 		<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-		<script th:src="@{/plugins/morris/raphael.min.js}"></script>
-		<script th:src="@{/plugins/morris/morris.js}"></script>
-		<script th:src="@{/plugins/jquery-jvectormap/jquery-jvectormap.min.js}"></script>
-		<script th:src="@{/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js}"></script>
-		<script th:src="@{/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js}"></script>
+		<script th:src="@{/plugins/DataTables/media/js/jquery.dataTables.js}"></script>
+		<script th:src="@{/plugins/DataTables/media/js/dataTables.bootstrap.min.js}"></script>
+		<script th:src="@{/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js}"></script>
+		<script th:src="@{/js/table-manage-responsive.demo.min.js}"></script>
+		<script th:src="@{/plugins/parsley/dist/parsley.js}"></script>
 		<script th:src="@{/plugins/gritter/js/jquery.gritter.js}"></script>
-		<script th:src="@{/js/common/index.js}"></script>
+		<script th:src="@{/js/ui-modal-notification.demo.min.js}"></script>
 		<script th:src="@{/js/apps.min.js}"></script>
 		<!-- ================== END PAGE LEVEL JS ================== -->
 
 		<script>
 			$(document).ready(function() {
 				App.init();
-				Index.init();
+				Notification.init();
 			});
 		</script>
 	</body>

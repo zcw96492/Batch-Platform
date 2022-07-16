@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>批处理平台</title>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+    </head>
+    <body>
+        <!-- 页面上方进度条 开始 -->
+        <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+        <!-- 页面上方进度条 结束 -->
+
+        <!-- 页面容器 开始 -->
+        <div id="page-container" class="fade in page-sidebar-fixed page-header-fixed">
+            <!-- 页面中间内容部分 开始 -->
+            <div id="content" class="content" th:fragment="profileContent">
+                <!-- 表头部分 开始 -->
+                <ol class="breadcrumb pull-right">
+                    <li><a href="javascript:;">个人信息</a></li>
+                    <li><a href="javascript:;">个人信息修改</a></li>
+                    <li class="active">密码重置</li>
+                </ol>
+                <!-- 内容部分 标题栏 开始 -->
+                <h1 class="page-header">个人信息 <small>在这里进行个人信息预览及修改</small></h1>
+                <!-- 内容部分 标题栏 结束 -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-inverse" data-sortable-id="form-validation-1">
+                            <div class="panel-heading">
+                                <div class="panel-heading-btn">
+                                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                </div>
+                                <h4 class="panel-title">密码重置</h4>
+                            </div>
+                            <div class="panel-body panel-form">
+                                <form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4" for="password">新密码 * :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" type="password" id="password" name="password" placeholder="请输入新密码" data-parsley-required="true" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4" for="confirmPassword">确认新密码 * :</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="请再次输入新密码" data-parsley-required="true" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4"></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <button type="submit" id="commit" class="btn btn-primary">保&nbsp;&nbsp;存</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页面中间内容部分 结束 -->
+        </div>
+        <!-- 页面容器 结束 -->
+    </body>
+</html>

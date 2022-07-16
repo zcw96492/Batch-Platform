@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>批处理平台</title>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+    </head>
+    <body>
+        <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+            <div id="sidebar" class="sidebar" th:fragment="navigationLeft">
+                <div data-scrollbar="true" data-height="100%">
+                    <!-- 页面左侧导航菜单-头部账户显示部分 开始 -->
+                    <ul class="nav">
+                        <li class="nav-profile">
+                            <div class="image">
+                                <a href="javascript:;"><img th:src="@{/img/user-13.jpg}" alt="图片加载失败" /></a>
+                            </div>
+                            <div class="info">
+                                谷诗雨
+                                <small>系统管理员</small>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 页面左侧导航菜单-头部账户显示部分 结束 -->
+
+                    <!--页面左侧导航菜单-菜单显示部分 开始 -->
+                    <ul class="nav">
+                        <li class="nav-header">导航菜单</li>
+                        <li class="has-sub active">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                <i class="fa fa-laptop"></i>
+                                <span>仪表板</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="active"><a th:href="@{/redirectIndex}">任务调度监控平台</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                <i class="fa fa-align-justify"></i>
+                                <span>批处理任务查询</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a th:href="@{/redirectBatchTaskQuery}">批处理任务查询</a></li>
+                                <li><a th:href="@{/redirectBatchTaskChangeQuery}">批处理任务变更查询</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:;">
+                                <b class="caret pull-right"></b>
+                                <i class="fa fa-windows"></i>
+                                <span>批处理任务变更</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a th:href="@{/redirectBatchTaskAdd}">批处理任务新增</a></li>
+                                <li><a th:href="@{/redirectBatchTaskAlter}">批处理任务修改</a></li>
+                                <li><a th:href="@{/redirectBatchTaskDelete}">批处理任务删除</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- 隐藏左侧导航菜单按钮 开始 -->
+                        <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+                        <!-- 隐藏左侧导航菜单按钮 结束 -->
+                    </ul>
+                    <!--页面左侧导航菜单-菜单显示部分 结束 -->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
