@@ -2,9 +2,9 @@ package com.newcore.batch.platform.job.listener;
 
 import com.newcore.batch.platform.job.quartz.QuartzManager;
 import com.newcore.batch.platform.model.TaskBaseModel;
-import com.newcore.batch.platform.model.TdBatchTask;
-import com.newcore.batch.platform.model.TdBatchTaskExample;
-import com.newcore.batch.platform.persistence.TdBatchTaskMapper;
+import com.newcore.batch.platform.model.po.BatchTask;
+import com.newcore.batch.platform.model.po.BatchTaskExample;
+import com.newcore.batch.platform.persistence.BatchTaskMapper;
 import com.newcore.batch.platform.utils.enumclass.BusinessExceptionCodeEnum;
 import com.newcore.batch.platform.utils.enumclass.TASK_STATUS;
 import com.newcore.batch.platform.utils.exception.BusinessException;
@@ -32,10 +32,10 @@ public class ScheduleJobListener implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(ScheduleJobListener.class);
 
-    private static final String JON_GROUP = "batch-platform-job";
+    private static final String JON_GROUP = "batch-platform-default-job";
 
     @Autowired
-    private TdBatchTaskMapper tdBatchTaskMapper;
+    private BatchTaskMapper batchTaskMapper;
 
     @Autowired
     private QuartzManager quartzManager;
@@ -47,24 +47,24 @@ public class ScheduleJobListener implements CommandLineRunner {
     @Override
     public void run(String... arg0){
         try {
-            TdBatchTaskExample tdBatchTaskExample = new TdBatchTaskExample();
-            tdBatchTaskExample.createCriteria().andJobGroupEqualTo(JON_GROUP);
-            List<TdBatchTask> tdBatchTaskList = tdBatchTaskMapper.selectByExample(tdBatchTaskExample);
-            if(!CollectionUtils.isEmpty(tdBatchTaskList)){
-                for (TdBatchTask tdBatchTask : tdBatchTaskList){
+            BatchTaskExample batchTaskExample = new BatchTaskExample();
+            batchTaskExample.createCriteria().andJobGroupEqualTo(JON_GROUP);
+            List<BatchTask> batchTaskList = batchTaskMapper.selectByExample(batchTaskExample);
+            if(!CollectionUtils.isEmpty(batchTaskList)){
+                for (BatchTask batchTask : batchTaskList){
                     TaskBaseModel taskBaseModel = new TaskBaseModel();
-                    taskBaseModel.setTaskId(tdBatchTask.getBatchTaskId());
-                    taskBaseModel.setTaskName(tdBatchTask.getTaskName());
-                    taskBaseModel.setTaskDescription(tdBatchTask.getTaskDescription());
-                    taskBaseModel.setCronExpression(tdBatchTask.getTaskCronExpression());
-                    taskBaseModel.setBeanClass(tdBatchTask.getBeanClassPath());
-                    taskBaseModel.setTaskStatus(tdBatchTask.getJobStatus() == null
+                    taskBaseModel.setTaskId(batchTask.getBatchTaskId());
+                    taskBaseModel.setTaskName(batchTask.getTaskName());
+                    taskBaseModel.setTaskDescription(batchTask.getTaskDescription());
+                    taskBaseModel.setCronExpression(batchTask.getTaskCronExpression());
+                    taskBaseModel.setBeanClass(batchTask.getBeanClassPath());
+                    taskBaseModel.setTaskStatus(batchTask.getJobStatus() == null
                             ? ""
-                            : TASK_STATUS.valueOfKey(tdBatchTask.getJobStatus()).getDescription()
+                            : TASK_STATUS.valueOfKey(batchTask.getJobStatus()).getDescription()
                     );
                     taskBaseModel.setTaskGroup(JON_GROUP);
-                    taskBaseModel.setTaskCreateUser(tdBatchTask.getCreateUser());
-                    taskBaseModel.setTaskUpdateUser(tdBatchTask.getUpdateUser());
+                    taskBaseModel.setTaskCreateUser(batchTask.getCreateUser());
+                    taskBaseModel.setTaskUpdateUser(batchTask.getUpdateUser());
                     taskBaseModel.setCreateTime(new Date());
                     taskBaseModel.setUpdateTime(new Date());
                     quartzManager.addTask(taskBaseModel);

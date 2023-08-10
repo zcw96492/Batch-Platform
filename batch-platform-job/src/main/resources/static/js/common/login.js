@@ -35,7 +35,7 @@ const loginCheckAccount = function() {
         "username" : $("#username").val(),
         "password" : $("#password").val()
     };
-    axios.post(httpUrl + "/accountLogin/loginCheck",requestData).then(function (response){
+    axios.post(httpUrl + "/account/loginCheck",requestData).then(function (response){
         const result = response.data.data;
         if(result.length > 0){
             console.log(result)

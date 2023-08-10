@@ -1,4 +1,4 @@
-package com.newcore.batch.platform.model;
+package com.newcore.batch.platform.model.request;
 
 import lombok.Data;
 

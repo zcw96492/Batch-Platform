@@ -31,7 +31,7 @@ public class QuartzConfiguration {
             schedulerFactoryBean.setJobFactory(jobFactory);
             return schedulerFactoryBean;
         } catch (Exception e) {
-            logger.info("");
+            logger.info("注入定时起Bean失败!",e);
             throw new BusinessException(BusinessExceptionCodeEnum.FAIL.getCode(),BusinessExceptionCodeEnum.FAIL.getMessage());
         }
     }
