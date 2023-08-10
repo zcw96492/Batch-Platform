@@ -34,7 +34,7 @@ public class AccountController {
      * @param accountLoginRequest 用户登录请求模型
      * @return 登录结果
      */
-    @ApiOperation(httpMethod = "POST",value = "login", notes = "批处理平台登录方法", response = String.class)
+    @ApiOperation(httpMethod = "POST",value = "login", notes = "批处理平台-用户登录方法", response = String.class)
     @PostMapping("/login")
     public String login(Model model, AccountLoginRequest accountLoginRequest){
         logger.info("批处理平台 || 登录方法 || login || 入参条件:{}", JSON.toJSONString(accountLoginRequest));
@@ -46,7 +46,7 @@ public class AccountController {
      * @param accountRegisterRequest 注册请求模型
      * @return 注册结果
      */
-    @ApiOperation(httpMethod = "POST",value = "registerCommit", notes = "批处理平台注册方法", response = String.class)
+    @ApiOperation(httpMethod = "POST",value = "registerCommit", notes = "批处理平台-用户注册方法", response = String.class)
     @PostMapping("/registerCommit")
     public String registerCommit(@RequestBody AccountRegisterRequest accountRegisterRequest){
         logger.info("批处理平台 || 注册方法 || registerCommit || 入参条件:{}", JSON.toJSONString(accountRegisterRequest));
