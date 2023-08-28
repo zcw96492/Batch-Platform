@@ -2,6 +2,10 @@ package com.newcore.batch.platform.job.task;
 
 import com.newcore.batch.platform.job.api.DataExportTaskService;
 import com.newcore.batch.platform.job.api.TaskService;
+import com.newcore.batch.platform.model.TaskBaseModel;
+import com.newcore.batch.platform.model.request.ExportRequest;
+import com.newcore.batch.platform.model.response.ExportResponse;
+import com.newcore.batch.platform.utils.DateUtils;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -34,8 +38,12 @@ public class DataExportTask implements Job {
      */
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        int count = 0;
-        count = count + 1;
-        logger.info("数据导出批作业 || 执行......{}",count);
+        logger.info("数据导出批作业 || 当前任务执行时间:{}", DateUtils.getFormatDateString(jobExecutionContext.getFireTime(),null));
+        TaskBaseModel taskBaseModel = new TaskBaseModel();
+        taskService.recordTaskExecute(taskBaseModel);
+
+        ExportRequest exportRequest = new ExportRequest();
+        exportRequest.setTaskName(null);
+        ExportResponse exportResponse = dataExportTaskService.export(exportRequest);
     }
 }

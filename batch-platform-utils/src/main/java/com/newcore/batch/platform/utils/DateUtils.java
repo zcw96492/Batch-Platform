@@ -83,6 +83,9 @@ public class DateUtils {
      * @return 格式化后的日期
      */
     public static String getFormatDateString(Date date,String format){
+        if(StringUtils.isBlank(format)){
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        }
         if(date == null){
             return "";
         }

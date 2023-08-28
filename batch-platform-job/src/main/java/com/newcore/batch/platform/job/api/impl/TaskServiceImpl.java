@@ -1,6 +1,7 @@
 package com.newcore.batch.platform.job.api.impl;
 
 import com.newcore.batch.platform.job.api.TaskService;
+import com.newcore.batch.platform.model.TaskBaseModel;
 import com.newcore.batch.platform.model.request.TaskQueryRequest;
 import com.newcore.batch.platform.model.response.TaskQueryResponse;
 import com.newcore.batch.platform.persistence.BatchExecHistoryMapper;
@@ -38,5 +39,14 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<TaskQueryResponse> queryTask(TaskQueryRequest taskQueryRequest) {
         return null;
+    }
+
+    /**
+     * 记录任务执行
+     * @param taskBaseModel 任务平台基本模型
+     */
+    @Override
+    public void recordTaskExecute(TaskBaseModel taskBaseModel) {
+
     }
 }

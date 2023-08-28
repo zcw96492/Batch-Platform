@@ -1,5 +1,6 @@
 package com.newcore.batch.platform.job.api;
 
+import com.newcore.batch.platform.model.TaskBaseModel;
 import com.newcore.batch.platform.model.request.TaskQueryRequest;
 import com.newcore.batch.platform.model.response.TaskQueryResponse;
 
@@ -18,4 +19,10 @@ public interface TaskService {
      * @return 任务列表
      */
     List<TaskQueryResponse> queryTask(TaskQueryRequest taskQueryRequest);
+
+    /**
+     * 记录任务执行
+     * @param taskBaseModel 任务平台基本模型
+     */
+    void recordTaskExecute(TaskBaseModel taskBaseModel);
 }
