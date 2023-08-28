@@ -2,6 +2,7 @@ package com.newcore.batch.platform.job.api.impl;
 
 import com.newcore.batch.platform.job.api.TaskService;
 import com.newcore.batch.platform.model.TaskBaseModel;
+import com.newcore.batch.platform.model.po.BatchExecHistory;
 import com.newcore.batch.platform.model.request.TaskQueryRequest;
 import com.newcore.batch.platform.model.response.TaskQueryResponse;
 import com.newcore.batch.platform.persistence.BatchExecHistoryMapper;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,6 +49,13 @@ public class TaskServiceImpl implements TaskService {
      */
     @Override
     public void recordTaskExecute(TaskBaseModel taskBaseModel) {
-
+        BatchExecHistory batchExecHistory = new BatchExecHistory();
+        batchExecHistory.setBatchTaskId(Long.parseLong("1"));
+        batchExecHistory.setTaskExecuteStartTime(null);
+        batchExecHistory.setTaskExecuteEndTime(null);
+        batchExecHistory.setTaskExecuteDurationUnit("S");
+        batchExecHistory.setTaskExecuteDuration(null);
+        batchExecHistory.setCreateTime(new Date());
+        batchExecHistoryMapper.insert(batchExecHistory);
     }
 }
