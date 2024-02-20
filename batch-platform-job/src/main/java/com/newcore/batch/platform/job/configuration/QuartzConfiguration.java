@@ -38,7 +38,7 @@ public class QuartzConfiguration {
 
     /**
      * 创建schedule
-     * @return
+     * @return 定时器
      */
     @Bean(name = "scheduler")
     public Scheduler scheduler() {

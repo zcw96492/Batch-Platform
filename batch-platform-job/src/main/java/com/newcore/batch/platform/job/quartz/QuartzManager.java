@@ -34,20 +34,20 @@ public class QuartzManager {
     @SuppressWarnings("unchecked")
     public void addTask(TaskBaseModel taskBaseModel) {
         try {
-            /** 1.创建jobDetail实例,绑定Job实现类 */
+            /* 1.创建jobDetail实例,绑定Job实现类 */
             Class<? extends Job> jobClass = (Class<? extends Job>) (Class.forName(taskBaseModel.getBeanClass()).newInstance().getClass());
-            /** 2.指明job的名称,所在组的名称,以及绑定job类 */
+            /* 2.指明job的名称,所在组的名称,以及绑定job类 */
             JobDetail jobDetail = JobBuilder.newJob(jobClass).withIdentity(taskBaseModel.getTaskName(), taskBaseModel.getTaskGroup()).build();
-            /** 3.定义调度触发规则,使用cornTrigger */
+            /* 3.定义调度触发规则,使用cornTrigger */
             Trigger trigger = TriggerBuilder.newTrigger()
                     .withIdentity(taskBaseModel.getTaskName(), taskBaseModel.getTaskGroup())
                     .startAt(DateBuilder.futureDate(1, IntervalUnit.SECOND))
                     .withSchedule(CronScheduleBuilder.cronSchedule(taskBaseModel.getCronExpression()))
                     .startNow()
                     .build();
-            /** 4.把作业和触发器注册到任务调度中 */
+            /* 4.把作业和触发器注册到任务调度中 */
             scheduler.scheduleJob(jobDetail, trigger);
-            /** 5.启动定时任务 */
+            /* 5.启动定时任务 */
             if (!scheduler.isShutdown()) {
                 scheduler.start();
             }
